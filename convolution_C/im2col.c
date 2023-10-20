@@ -31,7 +31,7 @@
 // general parameters
 
 #define stride 1
-#define padding 0
+#define padding 1
 #define N_filters 1
 #define channels 1
 #define batch_size 1
@@ -134,6 +134,10 @@ int main()
 {
 
   int i, j, k, l, c, m, n, o, p, q, r, s, t, u, v, w;
+
+
+
+
 
   for (l = 0; l < batch_size; l++)
   {
