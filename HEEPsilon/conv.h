@@ -1,14 +1,51 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
+/*
+                              *******************
+******************************* H HEADER FILE *******************************
+**                            *******************                          **
+**                                                                         **
+** project  : CGRA-X-HEEP                                                  **
+** filename : conv.h                                                   **
+** version  : 1                                                            **
+** date     : 2023-08-28                                                    **
+**                                                                         **
+*****************************************************************************
+**                                                                         **
+** Copyright (c) EPFL                                                      **
+** All rights reserved.                                                    **
+**                                                                         **
+*****************************************************************************
+*/
 
+/***************************************************************************/
+/***************************************************************************/
+
+/**
+* @file   conv.h
+* @date   2023-08-28
+* @brief  A description of the kernel...
+*
+*/
+
+#ifndef _CONVOLUTION_H_
+#define _CONVOLUTION_H_
+
+/****************************************************************************/
+/**                                                                        **/
+/**                            MODULES USED                                **/
+/**                                                                        **/
+/****************************************************************************/
+
+#include <stdint.h>
+#include "../../kernels_common/kernels_common.h"
+extern kcom_kernel_t conv_kernel;
+// general parameters
 
 #define stride 1
 #define padding 0
 #define N_filter 16
 #define channel 16
 #define batch_size 1
-
+# define CHW_notHWC 0
 // input parameters
 
 #define row_input 16
@@ -17,8 +54,8 @@
 
 // filter parameters
 
-#define row_filter 1
-#define col_filter 1
+#define row_filter 3
+#define col_filter 3
 #define C_filter channel
 #define FILT_HALF_x (row_filter / 2)
 #define FILT_HALF_y (col_filter / 2)
@@ -5993,58 +6030,26 @@ static int32_t filter[N_filter][C_filter][row_filter][col_filter]=
 };
 
 
-static int32_t outputs[N_output][channel_output][row_output][col_output];
 
-int main()
-{
-  int32_t l, r, c, k, i, j, w, t;
-  int32_t S;
-  int32_t coeff;
-  int32_t data;
-  for (l = 0; l < N_output; l++)
-  {
-    for (k = 0; k < N_filter; k++)
-    {
-      for (r = 0; r < row_output; r++)
-      {
-        for (c = 0; c < col_output; c++)
-        {
-          S = 0;
-          for (w = 0; w < C_filter; w++)
-          {
-            for (i = -FILT_HALF_x; i <= FILT_HALF_x; i++)
-            {
-              for (j = -FILT_HALF_y; j <= FILT_HALF_y; j++)
-              {
-                coeff = filter[k][w][i + FILT_HALF_x][j + FILT_HALF_y];
 
-                data = input[l][w][r + i + FILT_HALF_x][c + j + FILT_HALF_y];
-                S += coeff * data;
-              }
-            }
-          }
-          outputs[l][k][r][c] = S;
-        }
-      }
-    }
-  }
-  printf("Output:\n");
-  for (l = 0; l < N_output; l++)
-  {
-    for (k = 0; k < N_filter; k++)
-    {
-      for (r = 0; r < row_output; r++)
-      {
-        for (c = 0; c < col_output; c++)
-        {
-          printf("%d ", outputs[l][k][r][c]);
-        }
-        printf("\n");
-      }
-      printf("\n");
-    }
-    printf("\n");
-  }
+   
 
-  return 0;
-}
+
+
+
+
+static int32_t output[N_output][channel_output][row_output][col_output];
+/****************************************************************************/
+/**                                                                        **/
+/**                          EXPORTED VARIABLES                            **/
+/**                                                                        **/
+/****************************************************************************/
+
+
+
+#endif // _REVERSEBITS_H_
+/****************************************************************************/
+/**                                                                        **/
+/**                                EOF                                     **/
+/**                                                                        **/
+/****************************************************************************/

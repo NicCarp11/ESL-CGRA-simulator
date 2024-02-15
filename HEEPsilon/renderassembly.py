@@ -9,6 +9,7 @@ def renderassembly(input_dim, filter_dimension, input_channel, output_channel):
     folder_juan = 'cd sw/applications/kernel_test/utils/'
 
     data = {
+        'input_dim': input_dim,
         'output_row': input_dim-filter_dimension+1,
         'output_col': input_dim-filter_dimension+1,
         'input_channel': input_channel,

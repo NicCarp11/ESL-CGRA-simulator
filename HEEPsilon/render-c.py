@@ -4,12 +4,13 @@ import renderim2col
 
 
 input_dim = 16
-filter_dimension = 3
-input_channel = 128
-output_channel = 48
+filter_dimension = 1
+input_channel = 16
+output_channel = 16
 
 data = {
     'input_dim': input_dim,
+    'filter_dimension': filter_dimension,
     'output_row': input_dim-filter_dimension+1,
     'output_col': input_dim-filter_dimension+1,
     'input_channel': input_channel,
