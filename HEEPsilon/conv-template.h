@@ -93,7 +93,7 @@ static int32_t filter[N_filter][C_filter][row_filter][col_filter]=
 % for k in range(0, 3):
             {
 % for l in range(0, 3):
-                  ${1+l + k*3}${"," if l != 3-1 else ""}
+                  ${1+l + k*3 + 9*j}${"," if l != 3-1 else ""}
 % endfor     
             }${"," if k != 3-1 else ""}
 % endfor
