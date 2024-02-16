@@ -9,45 +9,45 @@ LWD R2,LWD R2,LWD R2,LWD R2
 LWD R2,LWD R2,LWD R2,LWD R2
 LWD R2,LWD R2,LWD R2,LWD R2
 2,,,
-NOP,NOP,"SADD ROUT, ${output_channel//16}, ZERO",NOP
+NOP,NOP,"SADD ROUT, ${output_channel}, ZERO",NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 3,,,
-NOP,NOP,"SWI ROUT, 8",NOP
+NOP,NOP,"SWI ROUT, 12",NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 4,,,
-NOP,NOP,"SADD ROUT, ${9 * input_channel}, ZERO",NOP
+NOP,NOP,"SADD ROUT, ${input_dim*input_dim}, ZERO",NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 5,,,
-NOP,NOP,"SWI ROUT, 4",NOP
+NOP,NOP,"SWI ROUT, 8",NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 6,,,
-"LWI R1, R0","LWI R1, R0","LWI R1, R0","LWI R1, R0"
-"LWI R1, R0","LWI R1, R0","LWI R1, R0","LWI R1, R0"
-"LWI R1, R0","LWI R1, R0","LWI R1, R0","LWI R1, R0"
-"LWI R1, R0","LWI R1, R0","LWI R1, R0","LWI R1, R0"
+"SADD ROUT, ZERO, ${1 * input_channel//16}",NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
 7,,,
-"LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2"
+"SWI ROUT, 4",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 8,,,
-NOP,NOP,NOP,NOP
-"SADD ROUT, RCT, ZERO","SADD ROUT, RCT, ZERO","SADD ROUT, RCT, ZERO","SADD ROUT, RCT, ZERO"
-NOP,NOP,NOP,NOP
-"SADD ROUT, RCB, ZERO","SADD ROUT, RCB, ZERO","SADD ROUT, RCB, ZERO","SADD ROUT, RCB, ZERO"
+"LWI R1, R0","LWI R1, R0","LWI R1, R0","LWI R1, R0"
+"LWI R1, R0","LWI R1, R0","LWI R1, R0","LWI R1, R0"
+"LWI R1, R0","LWI R1, R0","LWI R1, R0","LWI R1, R0"
+"LWI R1, R0","LWI R1, R0","LWI R1, R0","LWI R1, R0"
 9,,,
-NOP,NOP,NOP,NOP
-NOP,NOP,NOP,NOP
-"SADD ROUT, RCB, ZERO","SADD ROUT, RCB, ZERO","SADD ROUT, RCB, ZERO","SADD ROUT, RCB, ZERO"
-NOP,NOP,NOP,NOP
+"LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2"
+"LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2"
+"LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2"
+"LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2","LWI ROUT, R2"
 10,,,
 "SMUL ROUT, ROUT, R1","SMUL ROUT, ROUT, R1","SMUL ROUT, ROUT, R1","SMUL ROUT, ROUT, R1"
 "SMUL ROUT, ROUT, R1","SMUL ROUT, ROUT, R1","SMUL ROUT, ROUT, R1","SMUL ROUT, ROUT, R1"
@@ -59,15 +59,15 @@ NOP,NOP,NOP,NOP
 "SADD R3, ROUT, R3","SADD R3, ROUT, R3","SADD R3, ROUT, R3","SADD R3, ROUT, R3"
 "SADD R3, ROUT, R3","SADD R3, ROUT, R3","SADD R3, ROUT, R3","SADD R3, ROUT, R3"
 12,,,
-"SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
-"SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
-"SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
-"SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
+"SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}"
+"SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}"
+"SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}"
+"SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}","SADD R0, R0, ${input_channel * 4}"
 13,,,
-"SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4"
-NOP,NOP,NOP,NOP
-NOP,NOP,NOP,NOP
-NOP,NOP,NOP,NOP
+"SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}"
+"SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}"
+"SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}"
+"SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}","SADD R2, R2, ${input_channel * 4}"
 14,,,
 "LWI ROUT, 4",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
@@ -79,31 +79,76 @@ NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 16,,,
-"BNE ROUT, ZERO, 6",NOP,NOP,NOP
+"BNE ROUT, ZERO, 8",NOP,NOP,NOP
 "SWI RCT, 4",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 17,,,
-SWD R3,SWD R3,SWD R3,SWD R3
-SWD R3,SWD R3,SWD R3,SWD R3
-SWD R3,SWD R3,SWD R3,SWD R3
-SWD R3,SWD R3,SWD R3,SWD R3
+"SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO"
+"SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO"
+"SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO"
+"SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO","SADD ROUT, R3, ZERO"
 18,,,
+"SADD ROUT, ROUT, RCB","SADD ROUT, ROUT, RCB","SADD ROUT, ROUT, RCB","SADD ROUT, ROUT, RCB"
+"SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}"
+"SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}"
+"SADD ROUT, ROUT, RCT","SADD ROUT, ROUT, RCT","SADD ROUT, ROUT, RCT","SADD ROUT, ROUT, RCT"
+19,,,
+"SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}"
+"SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4"
+"SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4"
+"SADD ROUT, ROUT, RCB","SADD ROUT, ROUT, RCB","SADD ROUT, ROUT, RCB","SADD ROUT, ROUT, RCB"
+20,,,
+"SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4"
 NOP,NOP,NOP,NOP
-"SADD ROUT, R2, ZERO","SADD ROUT, R2, ZERO","SADD ROUT, R2, ZERO","SADD ROUT, R2, ZERO"
+NOP,NOP,NOP,NOP
+"SADD ROUT, ROUT, RCR","SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SADD ROUT, ROUT, RCL"
+21,,,
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+"SSUB R0, R0, ${input_channel * 4 * input_channel//16}","SADD R2, R2, 4","SADD R2, R2, 4","SADD ROUT, ROUT, RCR"
+22,,,
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+"SADD R2, R2, 4",NOP,NOP,SWD ROUT
+23,,,
 "LWI ROUT, 8",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
-19,,,
-"SADD R2, RCB, ZERO","SADD R2, RCB, ZERO","SADD R2, RCB, ZERO","SADD R2, RCB, ZERO"
 NOP,NOP,NOP,NOP
+NOP,NOP,NOP,"SSUB R0, R0, ${input_channel * 4 * input_channel//16}"
+24,,,
 "SSUB ROUT, ROUT, 1",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
-20,,,
 NOP,NOP,NOP,NOP
-"BNE RCB, ZERO, 4",NOP,NOP,NOP
-"SWI ROUT, 8",NOP,NOP,NOP
+NOP,NOP,NOP,"SADD R2, R2, 4"
+25,,,
+"BNE ROUT, ZERO, 6",NOP,NOP,NOP
+"SWI RCT, 8",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
-21,,,
+NOP,NOP,NOP,NOP
+26,,,
+"SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
+"SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
+"SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
+"SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
+27,,,
+"LWI ROUT, 12",NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+28,,,
+"SSUB ROUT, ROUT, 1",NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+29,,,
+"BNE ROUT, ZERO, 4",NOP,NOP,NOP
+"SWI RCT, 12",NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+NOP,NOP,NOP,NOP
+30,,,
 EXIT,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP

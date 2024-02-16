@@ -74,7 +74,7 @@ NOP,NOP,NOP,NOP
 "SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
 "SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4","SADD R0, R0, 4"
 15,,,
-"SADD R2, R2, ${input_dim*4}","SADD R2, R2, ${input_dim*4}","SADD R2, R2, ${input_dim*4}","SADD R2, R2, ${input_dim*4}"
+"SADD R2, R2, ${input_dim*input_dim*4}","SADD R2, R2, ${input_dim*input_dim*4}","SADD R2, R2, ${input_dim*input_dim*4}","SADD R2, R2, ${input_dim*input_dim*4}"
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
@@ -114,21 +114,31 @@ NOP,NOP,NOP,NOP
 "SWI ROUT, 8",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 23,,,
+"SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}"
+"SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}"
+"SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}"
+"SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}","SSUB R0, R0, ${4 * input_channel}"
+24,,,
+"SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO"
+"SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO"
+"SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO"
+"SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO","SSUB R3, ZERO, ZERO"
+25,,,
 NOP,NOP,NOP,NOP
-"SADD ROUT, R2, 4","SADD ROUT, R2, 4","SADD ROUT, R2, 4","SADD ROUT, R2, 4"
+"SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4","SADD R2, R2, 4"
 "LWI ROUT, 12",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
-24,,,
+26,,,
 "SADD R2, RCB, ZERO","SADD R2, RCB, ZERO","SADD R2, RCB, ZERO","SADD R2, RCB, ZERO"
 NOP,NOP,NOP,NOP
 "SSUB ROUT, ROUT, 1",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
-25,,,
+27,,,
 NOP,NOP,NOP,NOP
 "BNE RCB, ZERO, 4",NOP,NOP,NOP
 "SWI ROUT, 12",NOP,NOP,NOP
 NOP,NOP,NOP,NOP
-26,,,
+28,,,
 EXIT,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
 NOP,NOP,NOP,NOP
