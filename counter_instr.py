@@ -6,10 +6,8 @@ def counter(infile, outfile):
         reader = csv.reader(f)
         counts = {
             'NOP': {}, 
-            'LWD': {}, 
-            'SWD': {}, 
-            'LWI': {}, 
-            'SWI': {},
+            'LW': {},  # Unifica LWD e LWI in LW
+            'SW': {},  # Unifica SWD e SWI in SW
             'ALU': {}  # Aggiunta della categoria ALU
         }
         current_timestamp = None
@@ -26,14 +24,10 @@ def counter(infile, outfile):
                 for instr in row:
                     if instr == "NOP":
                         continue  # Escludi NOP dal conteggio ALU
-                    elif re.match(r"LWD\s+\w+", instr):
-                        counts['LWD'][current_timestamp] += 1
-                    elif re.match(r"SWD\s+\w+", instr):
-                        counts['SWD'][current_timestamp] += 1
-                    elif re.match(r"LWI\s+\w+,\s*\w+", instr):
-                        counts['LWI'][current_timestamp] += 1
-                    elif re.match(r"SWI\s+\w+,\s*\w+", instr):
-                        counts['SWI'][current_timestamp] += 1
+                    elif re.match(r"LW[D|I]\s+\w+", instr) or re.match(r"LW[D|I]\s+\w+,\s*\w+", instr):
+                        counts['LW'][current_timestamp] += 1
+                    elif re.match(r"SW[D|I]\s+\w+", instr) or re.match(r"SW[D|I]\s+\w+,\s*\w+", instr):
+                        counts['SW'][current_timestamp] += 1
                     else:
                         counts['ALU'][current_timestamp] += 1  # Aggiornamento del conteggio ALU
 
