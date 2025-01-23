@@ -141,3 +141,14 @@ Outputs written using the `SWD` or `SWI` operations are written into a `memory_o
 # Additional notes
 
 * If you make any modification to the utility scripts, you might need to restart the notebook for the changes to apply.
+
+# Additional notes Nicolo 23.01
+
+The four implementations are located in the convolution folder. At first glance, I noticed a convolution_weight_parallelism folder, which its instruction.csv file looks very similiar to the convolution_WP implementation ones. However
+- convolution_WP: This has three verions: instruciton, interleaved and not_interleaved. The not_interleaved version requires some parameters. In the conv-depthwise-3x3 branch of this repo, you can find a folder HEEPsilon and there is a script.sh that I used to pass these parameters (I'm about 80% sure of this xP)
+- convolution_im2col_input_parallelism: You can directly use the instruction_16_LWD version. I'm confindent this was the best-performing version among the others (you can double-check to confirm).
+- convolution_im2col_output_parallelism: There is only one version available, and I believe it's the one I used, as I couldn't find any other versions.
+- convolution_channel_output_parallelism: The same reasoning applies here.
+
+The remaining files in the folder are related to analyzing the instructions inside the kernel. For this purpose, there is a Python file named extract.py located in the conv-depthwise-3x3 branch.
+Enjoy ;)
